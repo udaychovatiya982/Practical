@@ -43,7 +43,7 @@ export class AddMusicComponent implements OnInit {
     })
     // this.addSongForm?.reset()
   }
-  public PlayList = [{ songName: "Temp", discription: "Temp", imgSrc: "../../assets/images.jpeg", songSrc: "../../assets/Raatan Lambiyan_64(PagalWorld.com.se).mp3" }]
+  public PlayList = [{ songName: "Temp", _id: "13545", discription: "Temp", imgSrc: "../../assets/images.jpeg", songSrc: "../../assets/Raatan Lambiyan_64(PagalWorld.com.se).mp3" }]
   public async getPlayList() {
     this.caller.GetAllSong().subscribe(async (res: any) => {
       console.log(res);
@@ -64,14 +64,11 @@ export class AddMusicComponent implements OnInit {
     this.audio.load()
     this.audio.pause()
   }
-  // public onPlaySound(src: string) {
-  //   this.audio.src = '../../assets/Raatan Lambiyan_64(PagalWorld.com.se).mp3'
-  //   this.audio.load()
-  //   this.audio.play()
-  // }
-  // public onPauseSound(src: string) {
-  //   this.audio.src = '../../assets/Raatan Lambiyan_64(PagalWorld.com.se).mp3'
-  //   this.audio.load()
-  //   this.audio.pause()
-  // }
+  public onDeleteSong(id: any) {
+    this.caller.deleteSong(id).subscribe(async (res: any) => {
+      if (res) {
+
+      }
+    })
+  }
 }
