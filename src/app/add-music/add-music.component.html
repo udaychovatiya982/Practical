@@ -1,0 +1,63 @@
+<div class="container">
+    <form class="login-form pb-3 pt-4" #addSong="ngForm" autocomplete="off">
+        <div class="mb-3">
+            <label for="songName" class="form-label">Song Name</label>
+            <input type="text" class="form-control" ngModel #SongNa="ngModel" required id="songName"
+                placeholder="Song Name" name="songName">
+        </div>
+        <div class="mb-3">
+            <label for="discription" class="form-label">Discription</label>
+            <textarea class="form-control" id="discription" name="discription" ngModel #Disc="ngModel" required
+                rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="ImageFile" class="form-label">Select Image</label>
+            <input #file class="form-control" type="file" name="fileimage" ngModel #Image="ngModel"
+                (change)="onUploadImage(file.files)" required id="ImageFile" accept="image/*">
+        </div>
+        <div class="mb-3">
+            <label for="SongFile" class="form-label">Select Song</label>
+            <input #file2 class="form-control" type="file" ngModel name="filesong" #Song="ngModel" required
+                (change)="onUploadSong(file2.files)" id="SongFile" accept="audio/*">
+        </div>
+        <button type="button" class="login-form-btn" [disabled]="addSong.invalid" (click)="onAddSong(addSong)">
+            Add Song
+        </button>
+    </form>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Discription</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let s of PlayList;">
+                <td>{{s.songName}}</td>
+                <td>{{s.discription}}</td>
+                <td><img src="{{s.imgSrc}}" alt=""></td>
+                <td>
+                    <button type="button" class="login-form-btn"
+                        style="border: none; background-color: transparent; font-size: 35px;"
+                        (click)="onPlaySound(s.songSrc)">
+                        <i class="bi bi-play"></i>
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="login-form-btn"
+                        style="border: none; background-color: transparent; font-size: 35px;"
+                        (click)="onPauseSound(s.songSrc)">
+                        <i class="bi bi-pause-fill"></i>
+                    </button>
+                </td>
+                <td><i class="bi bi-trash" style="border: none; background-color: transparent; font-size: 35px;"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,21 @@
+<div class="container" *ngIf="!isLogin">
+    <div class="login-card pt-3 pb-5" style="user-select:none;">
+        <form class="login-form pb-3 pt-4" #loginForm="ngForm" autocomplete="off" style="display: inline-grid;justify-content: center;
+        align-items: center;width: 100%;margin: auto;">
+            <div class="form-item mb-4">
+                <input class="input-item" type="text" ngModel #Email="ngModel" required name="email"
+                    placeholder="Email">
+            </div>
+            <div class="form-item">
+                <input class="input-item" type="password" ngModel #Password="ngModel" required name="password"
+                    placeholder="Password">
+            </div>
+            <div class="container-login-form-btn mt-3">
+                <button class="login-form-btn" [disabled]="loginForm.invalid" (click)="onLogin(loginForm)">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<router-outlet></router-outlet>
